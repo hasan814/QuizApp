@@ -67,7 +67,7 @@ h3 {
   margin: 60px 0 30px;
 }
 
-.answer-text {
+.answer-list {
   cursor: pointer;
   text-align: left;
   font-size: 1.1rem;
@@ -78,7 +78,7 @@ h3 {
   background-color: #fff;
 }
 
-.answer-text:hover {
+.answer-list:hover {
   border: 2px solid #fff;
   background-color: #eeedfb;
 }
