@@ -20,7 +20,7 @@
 
 #container {
   width: 700px;
-  display: block;
+  display: none;
 }
 
 .header {
