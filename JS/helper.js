@@ -13,5 +13,3 @@ export const formatData = (questionData) => {
     };
   });
 };
-
-export const checkAnswer = () => {};

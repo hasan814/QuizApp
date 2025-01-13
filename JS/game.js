@@ -1,4 +1,4 @@
-import { checkAnswer, formatData } from "./helper.js";
+import { formatData } from "./helper.js";
 
 const URL =
   "https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple";
@@ -29,13 +29,22 @@ const showQuestion = () => {
   const { question, answers, correctAnswerIndex } =
     formattedData[questionIndex];
   correctAnswer = correctAnswerIndex;
+  console.log(correctAnswer);
   questionText.innerText = question;
   answerList.forEach((btn, index) => {
     btn.innerText = answers[index];
   });
 };
 
+const checkAnswer = (event, index) => {
+  const isCorrect = index === correctAnswer ? true : false;
+  if (isCorrect) event.target.classList.add("correct");
+  else
+    event.target.classList.add("incorrect"),
+      answerList[correctAnswer].classList.add("correct");
+};
+
 window.addEventListener("load", fetchData);
 answerList.forEach((btn, index) => {
-  btn.addEventListener("click", checkAnswer);
+  btn.addEventListener("click", (event) => checkAnswer(event, index));
 });
