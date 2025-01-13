@@ -1,0 +1,20 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+  border: none;
+  text-decoration: none;
+  list-style: none;
+  text-transform: capitalize;
+}
+
+body {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #eeedfb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+}
