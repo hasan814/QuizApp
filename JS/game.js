@@ -9,7 +9,7 @@ const nextBtn = document.getElementById("next-button");
 const container = document.getElementById("container");
 const answerList = document.querySelectorAll(".answer-list");
 const questionText = document.getElementById("question-text");
-const FinishedBtns = document.getElementById("finished-button");
+const FinishedBtn = document.getElementById("finished-button");
 const questionNumber = document.getElementById("question-number");
 
 let score = 0;
@@ -21,10 +21,14 @@ let questionIndex = 0;
 const CORRECT_BONUS = 10;
 
 const fetchData = async () => {
-  const response = await fetch(URL);
-  const responseData = await response.json();
-  formattedData = formatData(responseData.results);
-  start();
+  try {
+    const response = await fetch(URL);
+    const responseData = await response.json();
+    formattedData = formatData(responseData.results);
+    start();
+  } catch (error) {
+    console.error("Failed to fetch data:", error);
+  }
 };
 
 const start = () => {
@@ -58,11 +62,21 @@ const checkAnswer = (event, index) => {
       answerList[correctAnswer].classList.add("correct");
 };
 
+const finishedHandler = () => {
+  localStorage.setItem("score", JSON.stringify(score));
+  window.location.assign("/end.html");
+};
+
 const nextHandler = () => {
   questionIndex++;
-  if (questionIndex < formattedData.length)
-    (isAccepted = true), removeClasses(), showQuestion();
-  else window.location.assign("/end.html");
+
+  if (questionIndex < formattedData.length) {
+    isAccepted = true;
+    removeClasses();
+    showQuestion();
+  } else {
+    finishedHandler();
+  }
 };
 
 const removeClasses = () => {
@@ -71,6 +85,7 @@ const removeClasses = () => {
 
 window.addEventListener("load", fetchData);
 nextBtn.addEventListener("click", nextHandler);
+FinishedBtn.addEventListener("click", finishedHandler);
 answerList.forEach((btn, index) => {
   btn.addEventListener("click", (event) => checkAnswer(event, index));
 });
