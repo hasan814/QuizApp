@@ -1,0 +1,45 @@
+p {
+  width: 80px;
+  height: 80px;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 1.4rem;
+  margin-bottom: 4.5rem;
+  background-color: #6757d9;
+}
+
+input {
+  width: 300;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 1.2rem;
+  margin-bottom: 1.9rem;
+  border: 2px solid #fff;
+  background-color: #eeedfb;
+}
+
+input:focus {
+  border-color: #6757d9;
+}
+
+button,
+a {
+  width: 19rem;
+  padding: 1rem;
+  cursor: pointer;
+  color: #6757d9;
+  font-size: 1.2rem;
+  text-align: center;
+  border-radius: 1.2rem;
+  margin-bottom: 0.7rem;
+  background-color: #fff;
+}
+
+button:hover,
+a:hover {
+  background-color: #6757d9;
+  color: #fff;
+}
