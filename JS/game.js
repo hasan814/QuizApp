@@ -1,5 +1,6 @@
 import { formatData } from "./helper.js";
 
+const error = document.getElementById("error");
 const loader = document.getElementById("loader");
 const scoreText = document.getElementById("score");
 const nextBtn = document.getElementById("next-button");
@@ -29,6 +30,8 @@ const fetchData = async () => {
     start();
   } catch (error) {
     console.error("Failed to fetch data:", error);
+    loader.style.display = "none";
+    error.style.display = "block";
   }
 };
 
@@ -43,7 +46,6 @@ const showQuestion = () => {
   const { question, answers, correctAnswerIndex } =
     formattedData[questionIndex];
   correctAnswer = correctAnswerIndex;
-  console.log(correctAnswer);
   questionText.innerText = question;
   answerList.forEach((btn, index) => {
     btn.innerText = answers[index];
