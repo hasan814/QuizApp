@@ -70,7 +70,7 @@ const finishedHandler = () => {
 const nextHandler = () => {
   questionIndex++;
 
-  if (questionIndex < formattedData.length) {
+  if (questionIndex < 10) {
     isAccepted = true;
     removeClasses();
     showQuestion();
