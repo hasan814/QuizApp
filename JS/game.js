@@ -5,9 +5,12 @@ const URL =
 
 const loader = document.getElementById("loader");
 const scoreText = document.getElementById("score");
+const nextBtn = document.getElementById("next-button");
 const container = document.getElementById("container");
 const answerList = document.querySelectorAll(".answer-list");
 const questionText = document.getElementById("question-text");
+const FinishedBtns = document.getElementById("finished-button");
+const questionNumber = document.getElementById("question-number");
 
 let score = 0;
 let correctAnswer;
@@ -31,6 +34,7 @@ const start = () => {
 };
 
 const showQuestion = () => {
+  questionNumber.innerText = questionIndex + 1;
   const { question, answers, correctAnswerIndex } =
     formattedData[questionIndex];
   correctAnswer = correctAnswerIndex;
@@ -54,7 +58,19 @@ const checkAnswer = (event, index) => {
       answerList[correctAnswer].classList.add("correct");
 };
 
+const nextHandler = () => {
+  questionIndex++;
+  if (questionIndex < formattedData.length)
+    (isAccepted = true), removeClasses(), showQuestion();
+  else window.location.assign("/end.html");
+};
+
+const removeClasses = () => {
+  answerList.forEach((btn) => (btn.className = "answer-list"));
+};
+
 window.addEventListener("load", fetchData);
+nextBtn.addEventListener("click", nextHandler);
 answerList.forEach((btn, index) => {
   btn.addEventListener("click", (event) => checkAnswer(event, index));
 });
